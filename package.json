@@ -1,0 +1,16 @@
+{
+  "name": "dcp-mnist-inference",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MNIST inference using DCP with ONNX + Python preprocessing/postprocessing",
+  "author": "Dan Desjardins <dan@distributive.network>",
+  "license": "MIT",
+  "main": "dcp-inference.js",
+  "scripts": {
+    "infer": "node dcp-inference.js"
+  },
+  "dependencies": {
+    "dcp-client": "^5.2.0"
+  },
+  "packageManager": "npm@11.2.0"
+}
