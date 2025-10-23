@@ -37,13 +37,13 @@ To obtain keystores, contact: dan@dcp.dev
 
 1. Launch the inference job:
 ```
-node dcp-inference.js
+node inference-job.js
 ```
 2. Start browser-based DCP Workers:
 * Open https://dcp.work/demo
 * Enter join secret: `dcp`
 * Click **Start**
-3. As jobs are processed, results will be displayed in the terminal:
+3. As job sslices are processed, results will be displayed in the terminal:
 ```
 Input      Label  Index  Confidence
 -----------------------------------
