@@ -54,7 +54,7 @@ Browser-based DCP Workers are sufficient for testing, but production-scale workf
 ## Project Structure
 ```
 .
-├── dcp-inference.js        # Main job script
+├── inference-job.js        # Main job script
 ├── inference-function.js   # Worker-side function: preprocess → infer → postprocess
 ├── example/
 │   ├── MNIST.onnx          # ONNX model
@@ -67,17 +67,28 @@ Browser-based DCP Workers are sufficient for testing, but production-scale workf
 ## Configuration
 The following parameters can be modified for customization:
 
-| Parameter        | Location            | Description                                        |
-| ---------------- | ------------------- | -------------------------------------------------- |
-| Input images     | `example/input`     | Replace with your own images                       |
-| Batch size       | `dcp-inference.js`  | Number of images per job batch (`const batchSize`) |
-| Model and labels | `modelInfo`         | Swap ONNX model or class labels                    |
-| Compute group    | `job.computeGroups` | Set join key and join secret                       |
+| Parameter                    | Location                       | Description                                                                      |
+| ---------------------------- | ------------------------------ | -------------------------------------------------------------------------------- |
+| Input images                 | `example/input`                | Replace with your own inputs                                                     |
+| Batch size                   | `batchSize`                    | Number of inputs to batch (`const batchSize`)                                    |
+| Model and labels             | `modelInfo`                    | Swap ONNX model and class labels                                                 |
+| Python preprocessing script  | `modelInfo.preprocess`         | Path to the preprocessing Python file                                            |
+| Python postprocessing script | `modelInfo.postprocess`        | Path to the postprocessing Python file                                           |
+| Required Python packages     | `modelInfo.packages`           | List of Pyodide packages for the worker to load (e.g., `numpy`, `opencv-python`) |
+| Job name                     | `job.public.name`              | Name displayed in the DCP job list and in the workers                            |
+| Compute group                | `job.computeGroups`            | Set joinkKey and joinSecret for the group into which your job will deploy        |
+| Worker requirements          | `job.requires`                 | List of JavaScript libraries for the worker to load                              |
+| Execution environment        | `job.requirements.environment` | Environment flags for the worker (e.g., `webgpu: true`)                          |
+| Console logging              | `job.on('console', ...)`       | Optional: enable or disable logging of worker console messages in the client     |
+| Result handling              | `job.on('result', ...)`        | Optional: dynamically receive and handle individual result events                |
+| Error handling               | `job.on('error', ...)`         | Callback for handling errors from workers                                        |
+
 
 To reduce console verbosity from workers, you can comment out or remove:
 ```
 job.on('console', (c) => console.dir(c, { depth: Infinity }));
 ```
+or any of the other events including the result events and just het all the results at the end.
 
 ## Extending the Example
 
