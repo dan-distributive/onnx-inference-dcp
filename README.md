@@ -22,7 +22,7 @@ If you encounter any issues or have questions, you can reach the team via:
 ## Prerequisites
 
 * Node.js
-* DCP client library:
+* *dcp-client* library:
 ```
 npm install dcp-client
 ```
