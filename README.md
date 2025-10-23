@@ -39,7 +39,7 @@ To obtain keystores, contact: dan@dcp.dev
 ```
 node dcp-inference.js
 ```
-2. Start browser-based workers:
+2. Start browser-based DCP Workers:
 * Open https://dcp.work/demo
 * Enter join secret: `dcp`
 * Click **Start**
@@ -49,7 +49,7 @@ Input      Label  Index  Confidence
 -----------------------------------
 60110.png   8      8      99.9%
 ```
-Browser-based workers are sufficient for testing, but production-scale workflows can use native Docker, Linux, or Windows workers. More information: [DCP Workers](https://distributive.network/workers)
+Browser-based DCP Workers are sufficient for testing, but production-scale workflows can use native DCP Docker, Linux, or Windows Workers. More information: [DCP Workers](https://distributive.network/workers)
 
 ## Project Structure
 ```
