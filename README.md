@@ -1,4 +1,4 @@
-# Distributed MNIST Inference on DCP
+# Distributed ONNX Model Inference on DCP
 This project demonstrates how to run batch machine learning inference on the Distributive Compute Protocol (DCP) using:
 
 * Python preprocessing (`preprocess.py`)
