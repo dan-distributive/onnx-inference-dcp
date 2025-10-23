@@ -22,9 +22,9 @@ If you encounter any issues or have questions, you can reach the team via:
 ## Prerequisites
 
 * Node.js
-* DCP client libraries:
+* DCP client library:
 ```
-npm install
+npm install dcp-client
 ```
 * DCP keystore files in the home directory:
 ```
