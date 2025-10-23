@@ -24,7 +24,7 @@ If you encounter any issues or have questions, you can reach the team via:
 * Node.js
 * *dcp-client* library:
 ```
-npm install dcp-client
+npm i dcp-client
 ```
 * DCP keystore files in the home directory:
 ```
