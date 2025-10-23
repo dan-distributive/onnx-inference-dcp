@@ -88,15 +88,16 @@ To reduce console verbosity from workers, you can comment out or remove:
 ```
 job.on('console', (c) => console.dir(c, { depth: Infinity }));
 ```
-or any of the other events including the result events and just het all the results at the end.
+Other event listeners, such as `result`, can also be disabled if you prefer to process all results only after the job completes.
 
 ## Extending the Example
 
 The same structure can be used for other types of models or workflows:
 * Image classification or segmentation
 * Audio or video analysis
-* Large language model batching
+* Natural Language Processing (NLP)
 * Medical imaging pipelines
+* etc, etc
 The pattern remains:
 ```
 preprocess → infer → postprocess → return results
