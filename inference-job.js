@@ -95,7 +95,8 @@ async function main() {
         'onnxruntime-dcp/dcp-ort.js', 
         'pyodide-core/pyodide-core.js'
     ]);
-    job.requirements.environment = { webgpu: true }
+    // Uncomment line below to require GPU-equiped devices only. Otherwise, DCP will prefer GPU but still fall back to CPU (WASM).
+    //job.requirements.environment = { webgpu: true }
 
     // DCP events
     job.on('readystatechange', (s) => console.log(`State: ${s}`))
