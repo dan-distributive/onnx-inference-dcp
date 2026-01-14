@@ -42,8 +42,12 @@ async function inferenceFunction(sliceData, classLabels, modelB64, preprocessStr
 
 	// Create or reuse ONNX session
 	if (!globalThis.session) {
+		const executionProvider =
+			metadata.webgpu && typeof navigator !== 'undefined' && navigator.gpu
+				? 'webgpu'
+				: 'wasm';
 		globalThis.session = await ort.InferenceSession.create(model, {
-			executionProviders: [metadata['webgpu'] ? 'webgpu' : 'wasm'],
+			executionProviders: [executionProvider],
 			graphOptimizationLevel: 'all'
 		});
 	}
