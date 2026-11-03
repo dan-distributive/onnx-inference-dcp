@@ -22,7 +22,6 @@ async function inferenceFunction(sliceData, classLabels, modelB64, preprocessStr
 	// 1. WORKER & RUNTIME SETUP
 	// ======================================================
 	progress(0);
-	require('dcp-wasm.js');
 
 	// ======================================================
 	// 2. MODEL & ONNX SESSION INITIALIZATION
@@ -34,11 +33,11 @@ async function inferenceFunction(sliceData, classLabels, modelB64, preprocessStr
 
 	progress(0.1);
 
-	// Load ONNX Runtime once per worker
+	// Load ONNX Runtime once per worker. The ort-webgpu-dcp package embeds the wasm and applies the
+	// sandbox settings (one thread, no proxy worker), so no further setup is needed.
 	if (!globalThis.ort) {
-		globalThis.ort = require('dcp-ort.js');
+		globalThis.ort = require('ort-webgpu.js');
 	}
-	ort.env.wasm.simd = true;
 
 	// Create or reuse ONNX session
 	if (!globalThis.session) {
