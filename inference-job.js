@@ -57,9 +57,6 @@ async function main() {
         }
     }
 
-    // Push any remaining images
-    if (Object.keys(currentBatch).length) inputSet.push({ b64Data: currentBatch });
-
     // Push any leftovers (not filling a full batch)
     if (Object.keys(currentBatch).length > 0) {
         inputSet.push({ b64Data: currentBatch });
