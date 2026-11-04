@@ -57,9 +57,6 @@ async function main() {
         }
     }
 
-    // Push any remaining images
-    if (Object.keys(currentBatch).length) inputSet.push({ b64Data: currentBatch });
-
     // Push any leftovers (not filling a full batch)
     if (Object.keys(currentBatch).length > 0) {
         inputSet.push({ b64Data: currentBatch });
@@ -90,9 +87,10 @@ async function main() {
     // DCP Job config
     job.public.name = `${modelInfo.name}`;
     job.computeGroups = [{ joinKey: 'demo', joinSecret: 'dcp' }];
+    // ONNX Runtime Web 1.31 with WebGPU and WASM backends. Native workers with JSPI support (dcp-native 8+)
+    // can use the smaller, faster 'ort-webgpu-dcp/ort-jspi.js' instead; require('ort-jspi.js') in the work function to match.
     job.requires([
-        'onnxruntime-dcp/dcp-wasm.js', 
-        'onnxruntime-dcp/dcp-ort.js', 
+        'ort-webgpu-dcp/ort-webgpu.js',
         'pyodide-core/pyodide-core.js'
     ]);
     // Uncomment line below to require GPU-equiped devices only. Otherwise, DCP will prefer GPU but still fall back to CPU (WASM).

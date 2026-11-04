@@ -2,7 +2,7 @@
 This project demonstrates how to run batch machine learning inference on the Distributive Compute Platform (DCP) using:
 
 * Python preprocessing (`preprocess.py`)
-* ONNX runtime inference (`MNIST.onnx`)
+* ONNX Runtime inference (`MNIST.onnx`) on WebGPU or WASM, using the `ort-webgpu-dcp` DCP package (ONNX Runtime Web 1.31)
 * Python postprocessing (`postprocess.py`)
 * Distributed workers (browser workers or native workers)
 
@@ -43,7 +43,7 @@ node inference-job.js
 * Open https://dcp.work/demo
 * Enter join secret: `dcp`
 * Click **Start**
-3. As job sslices are processed, results will be displayed in the terminal:
+3. As job slices are processed, results will be displayed in the terminal:
 ```
 Input      Label  Index  Confidence
 -----------------------------------
@@ -77,7 +77,7 @@ The following parameters can be modified for customization:
 | Required Python packages     | `modelInfo.packages`           | List of Pyodide packages for the worker to load (e.g., `numpy`, `opencv-python`) |
 | Job name                     | `job.public.name`              | Name displayed in the DCP job list and in the workers                            |
 | Compute group                | `job.computeGroups`            | Set joinkKey and joinSecret for the group into which your job will deploy        |
-| Worker requirements          | `job.requires`                 | List of JavaScript libraries for the worker to load                              |
+| Worker requirements          | `job.requires`                 | List of JavaScript libraries for the worker to load. ONNX Runtime comes from `ort-webgpu-dcp/ort-webgpu.js`; native workers with JSPI can use the smaller, faster `ort-webgpu-dcp/ort-jspi.js` |
 | Execution environment        | `job.requirements.environment` | Environment flags for the worker (e.g., `webgpu: true`)                          |
 | Console logging              | `job.on('console', ...)`       | Optional: enable or disable logging of worker console messages in the client     |
 | Result handling              | `job.on('result', ...)`        | Optional: dynamically receive and handle individual result events                |
