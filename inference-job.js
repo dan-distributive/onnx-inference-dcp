@@ -86,7 +86,7 @@ async function main() {
     
     // DCP Job config
     job.public.name = `${modelInfo.name}`;
-    job.computeGroups = [{ joinKey: 'demo', joinSecret: 'dcp' }];
+    job.computeGroups = [{ attachKey: 'demo', attachSecret: 'dcp' }];
     // ONNX Runtime Web 1.31 with WebGPU and WASM backends. Native workers with JSPI support (dcp-native 8+)
     // can use the smaller, faster 'ort-webgpu-dcp/ort-jspi.js' instead; require('ort-jspi.js') in the work function to match.
     job.requires([

@@ -76,7 +76,7 @@ The following parameters can be modified for customization:
 | Python postprocessing script | `modelInfo.postprocess`        | Path to the postprocessing Python file                                           |
 | Required Python packages     | `modelInfo.packages`           | List of Pyodide packages for the worker to load (e.g., `numpy`, `opencv-python`) |
 | Job name                     | `job.public.name`              | Name displayed in the DCP job list and in the workers                            |
-| Compute group                | `job.computeGroups`            | Set joinkKey and joinSecret for the group into which your job will deploy        |
+| Compute group                | `job.computeGroups`            | Set attachKey and attachSecret for the group into which your job will deploy        |
 | Worker requirements          | `job.requires`                 | List of JavaScript libraries for the worker to load. ONNX Runtime comes from `ort-webgpu-dcp/ort-webgpu.js`; native workers with JSPI can use the smaller, faster `ort-webgpu-dcp/ort-jspi.js` |
 | Execution environment        | `job.requirements.environment` | Environment flags for the worker (e.g., `webgpu: true`)                          |
 | Console logging              | `job.on('console', ...)`       | Optional: enable or disable logging of worker console messages in the client     |

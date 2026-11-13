@@ -10,7 +10,7 @@
     "infer": "node dcp-inference.js"
   },
   "dependencies": {
-    "dcp-client": "^5.2.0"
+    "dcp-client": "^5.9.0"
   },
   "packageManager": "npm@11.2.0"
 }
